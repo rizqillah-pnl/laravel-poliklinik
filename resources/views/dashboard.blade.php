@@ -94,47 +94,49 @@
                     <h2>Data Pengunjung Hari Ini</h2>
                 </div>
                 <div class="card-body mt-3 ">
-                    <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns" >
+                    <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
                         <table id="myTable" class="table responsive nowrap table-bordered table-striped align-middle"
                             style="width:100%">
-                                <thead>
+                            <thead>
+                                <tr>
+                                    <th>no</th>
+                                    <th>nama</th>
+                                    <th>umur</th>
+                                    <th>jk</th>
+                                    <th>penyakit</th>
+                                    <th>alergi</th>
+                                    <th>penanggung jawab</th>
+                                    <th>action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($pasien as $ps)
                                     <tr>
-                                        <th>no</th>
-                                        <th>nama</th>
-                                        <th>umur</th>
-                                        <th>jk</th>
-                                        <th>penyakit</th>
-                                        <th>alergi</th>
-                                        <th>penanggung jawab</th>
-                                        <th >action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Graiden</td>
-                                        <td>20</td>
-                                        <td>pria</td>
-                                        <td>lambung</td>
-                                        <td>udang</td>
+                                        <td>{{ $ps->no_induk }}</td>
+                                        <td>{{ $ps->nama }}</td>
+                                        <td>{{ $ps->umur }}</td>
+                                        <td>{{ $ps->jenis_kelamin }}</td>
+                                        <td>Flu</td>
+                                        <td>Ikan dan Udang</td>
                                         <td>Dr.budi</td>
                                         <td>
                                             <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"
-                                            data-bs-target="#">
-                                            <i class="bi bi-eye"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-sm btn-warning" data-bs-toggle="modal"
-                                            data-bs-target="#">
-                                            <i class="bi bi-pencil-square"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal"
-                                            data-bs-target="#modalHapus">
-                                            <i class="bi bi-trash"></i>
-                                        </button>
+                                                data-bs-target="#">
+                                                <i class="bi bi-eye"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-sm btn-warning" data-bs-toggle="modal"
+                                                data-bs-target="#">
+                                                <i class="bi bi-pencil-square"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal"
+                                                data-bs-target="#modalHapus">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
                                         </td>
                                     </tr>
+                                @endforeach
 
-                                    <tr>
+                                {{-- <tr>
                                         <td>2</td>
                                         <td>Graiden</td>
                                         <td>20</td>
@@ -180,14 +182,14 @@
                                             <i class="bi bi-trash"></i>
                                         </button>
                                         </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                                    </tr> --}}
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
+    </div>
 
-        </section>
+    </section>
     </div>
 @endsection

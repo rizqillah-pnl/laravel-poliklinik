@@ -15,17 +15,16 @@ class LoginController extends Controller
 
     public function authenticate(Request $request)
     {
+
         $credentials = $request->validate([
-            'username' => 'required',
+            'no_induk' => 'required',
             'password' => 'required'
         ]);
 
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            if (Auth::user()->role != 0) {
-                return redirect()->intended('/dashboard');
-            }
+            return redirect()->intended('/dashboard');
         }
 
         return back()->with('loginError', 'Login Gagal, periksa kembali username atau password anda!')->onlyInput('username');

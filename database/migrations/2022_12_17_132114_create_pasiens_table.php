@@ -13,19 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('pasiens', function (Blueprint $table) {
             $table->id();
+            $table->string('no_induk');
             $table->string('nama');
-            $table->foreignId('id_status')->constrained('statuses')->onUpdate('cascade')->onDelete('restrict');
-            $table->string('no_induk')->unique();
+            $table->string('umur');
             $table->enum('jenis_kelamin', ['pria', 'wanita']);
-            $table->string('alamat');
-            $table->string('username')->unique();
-            $table->string('password');
-            $table->rememberToken();
+            $table->text('alamat');
+            $table->date('tanggal_berobat');
             $table->timestamps();
         });
     }
+
     /**
      * Reverse the migrations.
      *
@@ -33,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('pasiens');
     }
 };

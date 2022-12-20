@@ -3,9 +3,10 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Pasien;
+use App\Models\status;
+use \App\Models\User;
 use Illuminate\Database\Seeder;
-use Illuminate\Foundation\Auth\User;
-use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,20 +17,29 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        status::create([
+            'nama' => 'Admin'
+        ]);
+        status::create([
+            'nama' => 'Mahasiswa'
+        ]);
+        status::create([
+            'nama' => 'Dosen'
+        ]);
+        status::create([
+            'nama' => 'Dokter'
+        ]);
+        status::create([
+            'nama' => 'Perawat'
+        ]);
+
+        User::factory(50)->create();
+        Pasien::factory(50)->create();
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
 
-        User::create([
-            'nama' => 'Administrator',
-            'username' => 'admin',
-            'password' => Hash::make('admin'),
-            'alamat' => fake()->city(),
-            'no_hp' => fake()->unique()->numerify('852########'),
-            'role' => 1,
-        ]);
     }
 }

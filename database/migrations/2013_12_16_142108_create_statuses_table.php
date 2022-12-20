@@ -13,19 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('statuses', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->foreignId('id_status')->constrained('statuses')->onUpdate('cascade')->onDelete('restrict');
-            $table->string('no_induk')->unique();
-            $table->enum('jenis_kelamin', ['pria', 'wanita']);
-            $table->string('alamat');
-            $table->string('username')->unique();
-            $table->string('password');
-            $table->rememberToken();
             $table->timestamps();
         });
     }
+
     /**
      * Reverse the migrations.
      *
@@ -33,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('statuses');
     }
 };

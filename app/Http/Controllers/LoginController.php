@@ -27,7 +27,7 @@ class LoginController extends Controller
             return redirect()->intended('/dashboard');
         }
 
-        return back()->with('loginError', 'Login Gagal, periksa kembali username atau password anda!')->onlyInput('username');
+        return back()->with('loginError', 'Login Gagal, periksa kembali No Induk atau password anda!')->onlyInput('no_induk');
     }
 
     public function logout()

@@ -10,6 +10,6 @@ class DashboardController extends Controller
     public function index()
     {
         $pasien = Pasien::get();
-        return view('dashboard')->with(['pasien' => $pasien]);
+        return view('dashboard', ['pasien' => $pasien]);
     }
 }

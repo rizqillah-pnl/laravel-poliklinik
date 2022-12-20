@@ -13,15 +13,15 @@ class LappasienController extends Controller
      */
     public function index()
     {
-        
-        $tanggal_awal = date('Y-m-d', strtotime($request->tgl_awal)).' 00:00:00';
-        $tanggal_akhir = date('Y-m-d', strtotime($request->tgl_akhir)).' 23:59:59';
+
+        $tanggal_awal = date('Y-m-d', strtotime($request->tgl_awal)) . ' 00:00:00';
+        $tanggal_akhir = date('Y-m-d', strtotime($request->tgl_akhir)) . ' 23:59:59';
         $title = "List Transaksi dari tanggal $tanggal_awal sampai tanggal $tanggal_akhir";
-        $transaksis = Pasien::whereBetween('created_at', [$tanggal_awal,$tanggal_akhir])->orderByRaw('created_at DESC')->get();
+        $transaksis = Pasien::whereBetween('created_at', [$tanggal_awal, $tanggal_akhir])->orderByRaw('created_at DESC')->get();
         // $transaksis = Transaksi::all();
         // dd($transaksis);
         return view('laporan.lappasien', [
-            'title'=>$title,
+            'title' => $title,
             'transaksis' => $transaksis,
         ])->with(compact());
     }
